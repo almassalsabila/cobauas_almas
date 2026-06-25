@@ -3,26 +3,25 @@
 require_once 'Karyawan.php';
 
 class KaryawanMagang extends Karyawan {
-    // Properti tambahan spesifik
+    // 1. Properti tambahan spesifik magang
     private $uangSakuBulanan;
     private $sertifikatKampusMerdeka;
 
-    // Constructor
+    // 2. Constructor untuk menerima data dari database
     public function __construct($id_karyawan, $nama_karyawan, $departemen, $hariKerjaMasuk, $gajiDasarPerhari, $uangSakuBulanan, $sertifikatKampusMerdeka) {
         parent::__construct($id_karyawan, $nama_karyawan, $departemen, $hariKerjaMasuk, $gajiDasarPerhari);
         $this->uangSakuBulanan = $uangSakuBulanan;
         $this->sertifikatKampusMerdeka = $sertifikatKampusMerdeka;
     }
 
-    // Implementasi hitungGajiBersih()
+    // 3. Implementasi hitungGajiBersih() dengan potongan 20% (hanya ditulis 1 kali)
     public function hitungGajiBersih() {
-        // Anak magang mendapatkan akumulasi (hari kerja * gaji dasar harian) + uang saku bulanan tetap
-        return ($this->hariKerjaMasuk * $this->gajiDasarPerhari) + $this->uangSakuBulanan;
+        return ($this->hariKerjaMasuk * $this->gajiDasarPerhari) * 0.80;
     }
 
-    // Implementasi tampilkanProfilKaryawan()
+    // 4. Implementasi tampilkanProfilKaryawan()
     public function tampilkanProfilKaryawan() {
-        echo "=== PROFIL KARYAWAN MAGANG ===<br>";
+        echo "--- PROFIL KARYAWAN MAGANG ---<br>";
         echo "ID: " . $this->id_karyawan . "<br>";
         echo "Nama: " . $this->nama_karyawan . "<br>";
         echo "Departemen: " . $this->departemen . "<br>";
